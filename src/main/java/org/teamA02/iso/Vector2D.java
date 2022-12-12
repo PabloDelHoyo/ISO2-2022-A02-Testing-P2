@@ -2,6 +2,8 @@ package org.teamA02.iso;
 
 public class Vector2D {
 
+	public static double ZERO_VECTOR_EPSILON = 0.00001;
+
 	private double x;
 	private double y;
 
@@ -21,27 +23,44 @@ public class Vector2D {
 	public static Vector2D subtract(Vector2D first, Vector2D second) {
 		return new Vector2D(first.x - second.x, first.y - second.y);
 	}
-	
+
 	/**
-	 * Returns the angle (in degrees) between this vector and another one
+	 * Returns the angle (in degrees) between this vector and another one. If this
+	 * vector or the other is the zero vector, raise an exception because the
+	 * formula is not valid
+	 * 
 	 * @param other
 	 * @return an angle in degrees
 	 */
 	public double angleBetween(Vector2D other) {
+		if (isZero() || other.isZero()) {
+			throw new Vector2DException("Cannot obtain angle of the zero vector");
+		}
 		return Math.acos(dot(other) / (length() * other.length())) * 180 / Math.PI;
 	}
-	
+
 	/**
-	 * Performs the dot product between this vector and another one
+	 * Returns whether this vector is the zero vector (0, 0)
+	 * 
+	 * @return
+	 */
+	public boolean isZero() {
+		return Utils.doubleEquals(x, ZERO_VECTOR_EPSILON) && Utils.doubleEquals(y, ZERO_VECTOR_EPSILON);
+	}
+
+	/**
+	 * Performs the dot product between this vector and another one.
+	 * 
 	 * @param other
-	 * @return a scalar 
+	 * @return a scalar
 	 */
 	public double dot(Vector2D other) {
 		return x * other.x + y * other.y;
 	}
-	
+
 	/**
 	 * Calculates the length of this vector
+	 * 
 	 * @return the length of this vector
 	 */
 	public double length() {

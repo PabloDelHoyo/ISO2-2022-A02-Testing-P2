@@ -5,9 +5,13 @@ public class Utils {
 	// For this specific application, we are not interested in very high accuracy
 	public static double DEFAULT_EPSILON = 0.001;
 	
-	public static boolean doubleEquals(double d1, double d2) {
+	public static boolean doubleEquals(double d1, double d2, double epsilon) {
 		// Not the best way but the fastest one to implement.
 		return Math.abs(d1 - d2) < DEFAULT_EPSILON;
+	}
+	
+	public static boolean doubleEquals(double d1, double d2) {
+		return doubleEquals(d1, d2, DEFAULT_EPSILON);
 	}
 	
 	/**
