@@ -14,9 +14,18 @@ public class Triangle {
 		this.b = secondSide.length();
 		this.c = thirdSide.length();
 
-		this.alpha = 180 - firstSide.angleBetween(secondSide);
-		this.beta = 180 - secondSide.angleBetween(thirdSide);
-		this.theta = 180 - thirdSide.angleBetween(firstSide);
+		try {
+			this.alpha = 180 - firstSide.angleBetween(secondSide);
+			this.beta = 180 - secondSide.angleBetween(thirdSide);
+			this.theta = 180 - thirdSide.angleBetween(firstSide);
+		} catch (Vector2DException e) {
+			throw new DegenerateTriangleException();
+		}
+
+		// if it is degenerate, return an exception
+		if (Utils.doubleEquals(getMaxAngle(), 180)) {
+			throw new DegenerateTriangleException();
+		}
 	}
 
 	public SideType sideType() {
