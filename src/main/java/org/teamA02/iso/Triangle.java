@@ -51,7 +51,7 @@ public class Triangle {
 	}
 
 	public double getMaxAngle() {
-		return Math.max(Math.max(a, b), c);
+		return Math.max(Math.max(alpha, beta), theta);
 	}
 
 	public double getA() {
