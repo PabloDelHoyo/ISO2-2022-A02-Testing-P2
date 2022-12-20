@@ -23,6 +23,21 @@ public class Vector2D {
 	public static Vector2D subtract(Vector2D first, Vector2D second) {
 		return new Vector2D(first.x - second.x, first.y - second.y);
 	}
+	
+	public static Vector2D add(Vector2D first, Vector2D second) {
+		return new Vector2D(first.x + second.x, first.y + second.y);
+	}
+	
+	/**
+	 * Creates a vector rotated 'angle' degress. The point of rotation is (0, 0)
+	 * @param angle in degrees
+	 * @param length the length of the vector
+	 * @return
+	 */
+	public static Vector2D fromAngle(double angle, double length) {
+		double radians = angle * Math.PI / 180;
+		return new Vector2D(length * Math.cos(radians), length * Math.sin(radians));
+	}
 
 	/**
 	 * Returns the angle (in degrees) between this vector and another one. If this
