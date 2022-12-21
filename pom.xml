@@ -6,10 +6,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.teamA02.iso</groupId>
-	<artifactId>triangles</artifactId>
+	<artifactId>ISO2-2022-A02-Testing-P2</artifactId>
 	<version>0.1.0</version>
 
-	<name>triangles</name>
+	<name>ISO2-2022-A02-Testing-P2</name>
 	<url>http://www.esi.uclm.es</url>
 
 	<properties>
