@@ -119,4 +119,17 @@ public class TriangleTest {
 		assertEquals(Helper.triangleFromSides(20, 16, 34).sideType(), SideType.SCALENE);
 	}
 
+	@Test
+	public void pairwiseTriangleSucessfulCreation() {
+		new Triangle(new Vector2D(-2, -2), new Vector2D(-6, 3), new Vector2D(3, 4));
+		new Triangle(new Vector2D(5, -10), new Vector2D(-4, -4), new Vector2D(-5, -10));
+		new Triangle(new Vector2D(-3, -4), new Vector2D(4, -5), new Vector2D(10, 15));
+		new Triangle(new Vector2D(3, 4), new Vector2D(4, -5), new Vector2D(10, -22));
+		new Triangle(new Vector2D(-2, -2), new Vector2D(-6, 3), new Vector2D(3, 4));
+		new Triangle(new Vector2D(3, 4), new Vector2D(4, -5), new Vector2D(10, -22));
+		new Triangle(new Vector2D(5, -10), new Vector2D(-6, 3), new Vector2D(10, -22));
+		new Triangle(new Vector2D(-2, -2), new Vector2D(-4, -4), new Vector2D(10, -22));
+		new Triangle(new Vector2D(5, -10), new Vector2D(5, 9), new Vector2D(10, 15));
+	}
+
 }
