@@ -43,7 +43,8 @@ public class TriangleTest {
 	public void MCDCCoverageTriangleConstructorDegenerate() {
 		// This triangle is created in this way so that the three vertices are
 		// collinear.
-		// With Helper.withMaxAngle(), at least one pair of vertices is on top of another and
+		// With Helper.withMaxAngle(), at least one pair of vertices is on top of
+		// another and
 		// as a consequence, an exception is raised before reaching this point.
 		new Triangle(new Vector2D(0, 0), new Vector2D(3, 0), new Vector2D(10, 0));
 	}
@@ -72,12 +73,34 @@ public class TriangleTest {
 		assertEquals(Helper.triangleFromTwoAngles(10, 45, 45).sideType(), SideType.ISOSCELES);
 	}
 
+	@Test
 	public void MCDCCoverageSideTypeSecondDecision() {
 		assertEquals(Helper.triangleFromSides(10, 10, 8).sideType(), SideType.ISOSCELES);
 		assertEquals(Helper.triangleFromSides(13, 6, 13).sideType(), SideType.ISOSCELES);
 		assertEquals(Helper.triangleFromSides(12, 15, 15).sideType(), SideType.ISOSCELES);
-		assertEquals(Helper.triangleFromSides(10, 16, 14).sideType(), SideType.ISOSCELES);
+		assertEquals(Helper.triangleFromSides(10, 16, 14).sideType(), SideType.SCALENE);
 	}
 
-	// TODO: implement test cases to achieve decision coverage
+	@Test(expected = DegenerateTriangleException.class)
+	public void decisionCoverageConstructorDegenerate() {
+		new Triangle(new Vector2D(0, 0), new Vector2D(3, 0), new Vector2D(10, 0));
+	}
+
+	@Test
+	public void decisionCoverageConstructorNonDegenerate() {
+		assertEquals(Helper.withMaxAngle(10, 65).getMaxAngle(), 65, Utils.DEFAULT_EPSILON);
+	}
+
+	@Test
+	public void decisionCoverageAngleType() {
+		assertEquals(Helper.withMaxAngle(10, 90).getMaxAngle(), 90, Utils.DEFAULT_EPSILON);
+	}
+
+	@Test
+	public void decisionCoverageSideType() {
+		assertEquals(Helper.triangleFromTwoAngles(20, 60, 60).sideType(), SideType.EQUILATERAL);
+		assertEquals(Helper.triangleFromSides(8, 5, 5).sideType(), SideType.ISOSCELES);
+		assertEquals(Helper.triangleFromSides(15 * Math.sqrt(3), 30, 15).sideType(), SideType.SCALENE);
+	}
+
 }
