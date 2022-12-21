@@ -1,6 +1,7 @@
 package org.teamA02.iso;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -101,6 +102,21 @@ public class TriangleTest {
 		assertEquals(Helper.triangleFromTwoAngles(20, 60, 60).sideType(), SideType.EQUILATERAL);
 		assertEquals(Helper.triangleFromSides(8, 5, 5).sideType(), SideType.ISOSCELES);
 		assertEquals(Helper.triangleFromSides(15 * Math.sqrt(3), 30, 15).sideType(), SideType.SCALENE);
+	}
+
+	@Test
+	public void pairwiseSideType() {
+		assertEquals(Helper.triangleFromSides(20, 14, 23).sideType(), SideType.SCALENE);
+		assertEquals(Helper.triangleFromSides(46, 31, 46).sideType(), SideType.ISOSCELES);
+		assertEquals(Helper.triangleFromSides(30, 31, 23).sideType(), SideType.SCALENE);
+		assertEquals(Helper.triangleFromSides(30, 16, 25).sideType(), SideType.SCALENE);
+		assertEquals(Helper.triangleFromSides(57, 20, 46).sideType(), SideType.SCALENE);
+		assertEquals(Helper.triangleFromSides(20, 14, 23).sideType(), SideType.SCALENE);
+		assertEquals(Helper.triangleFromSides(8, 31, 34).sideType(), SideType.SCALENE);
+		assertEquals(Helper.triangleFromSides(8, 16, 23).sideType(), SideType.SCALENE);
+		assertEquals(Helper.triangleFromSides(8, 20, 25).sideType(), SideType.SCALENE);
+		assertEquals(Helper.triangleFromSides(20, 31, 25).sideType(), SideType.SCALENE);
+		assertEquals(Helper.triangleFromSides(20, 16, 34).sideType(), SideType.SCALENE);
 	}
 
 }
